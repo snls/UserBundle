@@ -10,7 +10,8 @@ namespace UserBundle\Entity;
 
 
 use Doctrine\ORM\Mapping\Entity as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
-abstract class User
+abstract class User implements UserInterface
 {
 }
