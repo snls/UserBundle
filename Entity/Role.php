@@ -1,5 +1,6 @@
 <?php
 /**
+ * 
  * Created by PhpStorm.
  * User: lookyalba
  * Date: 16.08.16
@@ -9,6 +10,7 @@
 namespace UserBundle\Entity;
 
 use Symfony\Component\Security\Core\Role\RoleInterface;
+
 
 class Role implements RoleInterface
 {
