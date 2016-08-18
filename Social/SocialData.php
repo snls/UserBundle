@@ -9,15 +9,9 @@
 namespace UserBundle\Social;
 
 /**
-<<<<<<< HEAD
  * @inheritdoc данные необходимые для работы с API соц. сетей
  * @package UserBundle\Social
  * @author snls aka LookyAlba
-=======
- *
- * Class SocialData данные необходимые для работы с API соц. сетей
- * @package UserBundle\Social
->>>>>>> origin/master
  */
 trait SocialData
 {

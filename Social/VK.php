@@ -8,12 +8,9 @@
 
 namespace UserBundle\Social;
 
-<<<<<<< HEAD
 /**
  * @author snls aka LookyAlba
  */
-=======
->>>>>>> origin/master
 use UserBundle\Social\SocialInterface as SocialI;
 use UserBundle\Social\SocialData as SocialD;
 
