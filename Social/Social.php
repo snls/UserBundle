@@ -11,10 +11,13 @@ namespace UserBundle\Social;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use UserBundle\Social\SocialInterface as SocialI;
 
+<<<<<<< HEAD
 /**
  * @inheritdoc Класс для авторизации
  * @author snls aka LookyAlba
  */
+=======
+>>>>>>> origin/master
 class Social implements SocialFactoryInterface
 {
     private $social;

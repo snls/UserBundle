@@ -11,10 +11,13 @@ namespace UserBundle\Social;
 use UserBundle\Social\SocialInterface as SocialI;
 use UserBundle\Social\SocialData as SocialD;
 
+<<<<<<< HEAD
 /**
  * @inheritdoc Данные для ФБ
  * @author snls aka LookyAlba
  */
+=======
+>>>>>>> origin/master
 class FB implements SocialI
 {
     use SocialD;

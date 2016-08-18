@@ -8,9 +8,16 @@
 
 namespace UserBundle\Social;
 
+<<<<<<< HEAD
 /**
  * @author snls aka LookyAlba
  */
 interface SocialFactoryInterface
 {
+=======
+
+interface SocialFactoryInterface
+{
+
+>>>>>>> origin/master
 }

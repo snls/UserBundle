@@ -8,9 +8,13 @@
 
 namespace UserBundle\Social;
 
+<<<<<<< HEAD
 /**
  * @author snls aka LookyAlba
  */
+=======
+
+>>>>>>> origin/master
 interface SocialInterface
 {
     /**
@@ -19,6 +23,7 @@ interface SocialInterface
      */
     public function getToken();
 
+<<<<<<< HEAD
     /**
      * @inheritdoc Получение данных пользователя
      */
@@ -27,5 +32,9 @@ interface SocialInterface
     /**
      * @inheritdoc Авторизация 
      */
+=======
+    public function getUser();
+
+>>>>>>> origin/master
     static public function auth();
 }
