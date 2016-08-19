@@ -43,10 +43,4 @@ interface UserProviderInterface
      * @throws UnsupportedUserException if the account is not supported
      */
     public function refreshUser(UserInterface $user);
-
-    /**
-     * @inheritdoc Создание пользователя 
-     * @return mixed
-     */
-    public function createUser();
 }

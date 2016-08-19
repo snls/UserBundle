@@ -9,8 +9,10 @@
 namespace UserBundle\Security;
 
 
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+use UserBundle\Entity\User;
 use UserBundle\Model\UserInterface;
 use UserBundle\Model\UserManagerInterface;
 use UserBundle\Model\UserProviderInterface;
@@ -50,8 +52,9 @@ class UserProvider implements UserProviderInterface
         return $user;
     }
 
-    public function createUser()
+    public function getUsers()
     {
-
+        return $this->userManager->findUsers();
     }
+
 }

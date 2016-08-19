@@ -10,10 +10,15 @@ use UserBundle\Security\UserProvider;
 class DefaultController extends Controller
 {
     /**
-     * @Route("user/")
+     * @Route("users/", name="listUser")
      */
     public function indexAction()
     {
-        return $this->render('UserBundle:Default:index.html.twig');
+        $em = $this->getDoctrine()->getRepository("UserBundle:User");
+        $users = $em->findAll();
+
+        return $this->render('UserBundle:Default:index.html.twig', [
+            'users' => $users
+        ]);
     }
 }
