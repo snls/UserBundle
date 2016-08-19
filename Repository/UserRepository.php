@@ -1,6 +1,7 @@
 <?php
 
 namespace UserBundle\Repository;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
  * UserRepository
@@ -10,21 +11,4 @@ namespace UserBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
-    /**
-     * Save User
-     */
-    public function saveUser()
-    {
-        if(empty($this->password)) {
-            throw new Exception(sprintf("Value password haven't was empty"));
-        }
-
-        if(empty($this->username)) {
-            throw new Exception(sprintf("Value username haven't was empty"));
-        }
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($this);
-        $em->flush();
-    }
 }

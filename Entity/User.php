@@ -128,4 +128,22 @@ class User
 
         return $this;
     }
+
+    /**
+     * Save User
+     */
+    public function saveUser()
+    {
+        if(empty($this->password)) {
+            throw new Exception(sprintf("Value password haven't was empty"));
+        }
+
+        if(empty($this->username)) {
+            throw new Exception(sprintf("Value username haven't was empty"));
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($this);
+        $em->flush();
+    }
 }
