@@ -9,23 +9,49 @@
 namespace UserBundle\Security;
 
 
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+use UserBundle\Model\UserInterface;
+use UserBundle\Model\UserManagerInterface;
+use UserBundle\Model\UserProviderInterface;
 
 class UserProvider implements UserProviderInterface
 {
-    public function supportsClass($class)
+    protected $userManager;
+
+    public function __construct(UserManagerInterface $userManagerInterface)
     {
-        // TODO: Implement supportsClass() method.
+        $this->userManager = $userManagerInterface;
+        return $this;
+    }
+
+    private function supportsClass($class)
+    {
+        return ($class instanceof UserInterface) ? true : false;
     }
 
     public function refreshUser(UserInterface $user)
     {
-        // TODO: Implement refreshUser() method.
+        if(!$this->supportsClass($user)) {
+            throw new UnsupportedUserException(sprintf("Excepted as instance of UserBundle\\Model\\UserInterface, but got a ".get_class($user)));
+        }
+        
+        return $this->userManager->findUserBy(['id' => $user->getId()]);
     }
 
     public function loadUserByUsername($username)
     {
-        // TODO: Implement loadUserByUsername() method.
+        $user = $this->getUser($username);
+
+        if(!$user) {
+            throw new UsernameNotFoundException(sprintf("Username %s does not exist.", $username));
+        }
+
+        return $user;
+    }
+
+    public function createUser()
+    {
+
     }
 }
