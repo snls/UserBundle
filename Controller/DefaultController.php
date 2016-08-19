@@ -4,6 +4,8 @@ namespace UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use UserBundle\Model\UserManager;
+use UserBundle\Security\UserProvider;
 
 class DefaultController extends Controller
 {
