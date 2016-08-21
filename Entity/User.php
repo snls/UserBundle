@@ -11,12 +11,17 @@ namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Class User
  *
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
+ *
+ * @UniqueEntity("username")
+ * @UniqueEntity("email")
  */
 class User
 {
@@ -33,6 +38,9 @@ class User
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=40, nullable=true, unique=true)
+     *
+     * @Assert\Length(min=3, max=40)
+     * @Assert\NotBlank()
      */
     protected $username;
 

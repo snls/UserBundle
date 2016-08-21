@@ -26,6 +26,15 @@ class RegistrationController extends Controller
 
         $form->handleRequest($request);
         if($form->isSubmitted() and $form->isValid()) {
+            $validator = $this->get('validator');
+            $errors = $validator->validate($user);
+            if(count($errors) > 0) {
+                return $this->render('UserBundle:Registration:index.html.twig', array(
+                    'form' => $form->createView(),
+                    'errors' => $errors
+                ));
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
