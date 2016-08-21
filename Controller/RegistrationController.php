@@ -8,9 +8,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use UserBundle\Entity\User;
-use UserBundle\Form\UserType;
-use UserBundle\Model\UserManager;
-use UserBundle\Security\UserProvider;
+use UserBundle\Form\UserRegistrationType;
+use UserBundle\Repository\UserRepository;
 
 class RegistrationController extends Controller
 {
@@ -22,7 +21,7 @@ class RegistrationController extends Controller
     public function indexAction(Request $request)
     {
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserRegistrationType::class, $user);
 
         $form->handleRequest($request);
         if($form->isSubmitted() and $form->isValid()) {
@@ -38,26 +37,13 @@ class RegistrationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            
+
             return $this->redirectToRoute("listUser");
         }
 
         return $this->render('UserBundle:Registration:index.html.twig', array(
             'form' => $form->createView()
         ));
-    }
-
-    public function createUser()
-    {
-        $userProvider = new UserProvider(new UserManager());
-        $user = $userProvider->createUser();
-        $user->setUsername("LookyAlba")->setPassword("1111AAAA");
-
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        $em->flush();
-
     }
 
 }
