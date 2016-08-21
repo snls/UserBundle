@@ -48,6 +48,9 @@ class User
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=40, nullable=true, unique=true)
+     *
+     * @Assert\Length(min=3, max=40)
+     * @Assert\NotBlank()
      */
     protected $email;
 
@@ -55,6 +58,9 @@ class User
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=40, nullable=true)
+     * 
+     * @Assert\Length(min=3, max=40)
+     * @Assert\NotBlank()
      */
     protected $password;
 
