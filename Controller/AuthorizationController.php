@@ -8,8 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use UserBundle\Entity\User;
 use UserBundle\Form\UserAuthorizationType;
-use UserBundle\Form\UserType;
-use UserBundle\FormEntity\UserAuth;
 
 class AuthorizationController extends Controller
 {
