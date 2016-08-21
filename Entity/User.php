@@ -9,10 +9,9 @@
 namespace UserBundle\Entity;
 
 
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class User
@@ -20,9 +19,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
  *
- * @UniqueEntity("username")
- * @UniqueEntity("email")
+ * @UniqueEntity("email", groups={"registration"})
+ * @UniqueEntity("username", groups={"registration"})
  */
+
 class User
 {
     /**
@@ -39,8 +39,8 @@ class User
      *
      * @ORM\Column(name="username", type="string", length=40, nullable=true, unique=true)
      *
-     * @Assert\Length(min=3, max=40)
-     * @Assert\NotBlank()
+     * @Assert\Length(min=3, max=40, groups={"registration", "authorization"})
+     * @Assert\NotBlank(groups={"registration", "authorization"})
      */
     protected $username;
 
@@ -49,8 +49,8 @@ class User
      *
      * @ORM\Column(name="email", type="string", length=40, nullable=true, unique=true)
      *
-     * @Assert\Length(min=3, max=40)
-     * @Assert\NotBlank()
+     * @Assert\Length(min=3, max=40, groups={"registration"})
+     * @Assert\Email(groups={"registration"})
      */
     protected $email;
 
@@ -58,9 +58,9 @@ class User
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=40, nullable=true)
-     * 
-     * @Assert\Length(min=3, max=40)
-     * @Assert\NotBlank()
+     *
+     * @Assert\Length(min=3, groups={"registration", "authorization"})
+     * @Assert\NotBlank(groups={"registration", "authorization"})
      */
     protected $password;
 
