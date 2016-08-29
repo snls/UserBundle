@@ -22,6 +22,6 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return new Response("Default page");
+        return $this->render('UserBundle:Backend/Default:index.html.twig');
     }
 }

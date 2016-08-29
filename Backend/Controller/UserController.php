@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function indexAction()
     {
-        return new Response("List...");
+        return $this->render('UserBundle:Backend/User:list.html.twig');
     }
 
     /**
